@@ -11,7 +11,7 @@ This section contains the code and structure for training YOLOv8 on a **syntheti
 pip install ultralytics
 ```
 
-## 📁 Dataset Structure
+##  Dataset Structure
 Exported using Roboflow in YOLOv8 format:
 
 ```
@@ -30,7 +30,7 @@ flower-synthetic/
 Yolo_Traning_real_world_images_dataset (1).ipynb
 ```
 
-## 💡 Tips to Improve Results
+##  Tips to Improve Results
 - Try using `yolov8s.yaml` or `yolov8m.yaml`
 - Generate more varied synthetic images (lighting, angles, blur)
 - Include backgrounds and clutter for realism

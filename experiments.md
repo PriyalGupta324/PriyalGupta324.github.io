@@ -2,7 +2,7 @@
 title: Experiment Logs
 ---
 
-# 📘 Experiment Logs
+#  Experiment Logs
 
 A chronological log of training, validation, and tuning for all three dataset scenarios.
 

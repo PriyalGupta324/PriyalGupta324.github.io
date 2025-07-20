@@ -1,5 +1,5 @@
 ---
-title: CV Project Report
+title: Computer Vision Object Tracking Using yolo
 ---
 
 # 👋 Welcome to My Computer Vision Project

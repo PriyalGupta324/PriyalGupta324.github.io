@@ -58,9 +58,34 @@ This project compares object detection performance using:
 
 
 ### 3. ❌ Trained on Synthetic, Tested on Real
-- **mAP:** 59.6%
-- **Precision:** 60.2%
-- **Recall:** 56.0%
+#### 📊 Evaluation Metrics – Trained on Synthetic, Tested on Real (~24 Real Images)
+
+| Metric                  | Value (%) | Notes                                                                 |
+|-------------------------|-----------|-----------------------------------------------------------------------|
+| **mAP@0.5**             | 13.4%     | Very low — model struggles to localize objects on real data          |
+| **mAP@0.5:0.95**        | 4.5%      | Poor generalization across IoU thresholds                            |
+| **Precision (All)**     | 27.4%     | Many false positives; model confused by real-world variability       |
+| **Recall (All)**        | 18.8%     | Most objects are missed — low detection sensitivity                  |
+| **Box Loss / Class Loss / DFL Loss** | – | Not computed during validation phase                                 |
+
+---
+
+#### 🔍 Class-wise Performance Breakdown
+
+| Class         | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 | Interpretation                                              |
+|---------------|-----------|--------|---------|--------------|-------------------------------------------------------------|
+| **bud**       | 7.3%      | 5.0%   | 1.3%    | 0.4%         | Poor results — model didn’t generalize this class well       |
+| **full_bloom**| 9.2%      | 43.8%  | 15.8%   | 5.8%         | Recall is better, but confidence is low                      |
+| **semi_bloom**| 65.7%     | 7.7%   | 23.1%   | 7.3%         | Good precision, but poor coverage of actual instances        |
+
+---
+
+#### ⚠️ Interpretation
+
+These results indicate a **clear domain gap** between synthetic training data and real-world testing data. Even though the model performs well on synthetic data, it fails to generalize to real-world scenarios. This is typical in computer vision when the **distribution of synthetic images is too different** from real ones (in lighting, textures, noise, background, etc.)
+
+✅ *Conclusion:*  
+These low results are expected in domain transfer problems. But with small-scale fine-tuning, mixed data, or domain adaptation methods, performance on real-world data can improve significantly — even with small real datasets.
 
 ---
 

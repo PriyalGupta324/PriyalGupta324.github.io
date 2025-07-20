@@ -26,14 +26,36 @@ This project compares object detection performance using:
 ## 📈 Results
 
 ### 1. ✅ Trained + Tested on Real Data
-- **mAP:** 72.4%
-- **Precision:** 81.2%
-- **Recall:** 74.5%
+#### 📊 Evaluation Metrics (as Percentages)
+
+| Metric                  | Value (%) | Notes                                                                 |
+|-------------------------|-----------|-----------------------------------------------------------------------|
+| **mAP@0.5**             | 49.8%     | Fair accuracy given the small dataset size                           |
+| **mAP@0.5:0.95**        | 23.1%     | Low average precision; likely due to limited data diversity          |
+| **Precision**           | 55.8%     | Over half of detections are correct — decent start                   |
+| **Recall**              | 41.2%     | Model is missing several true positives, common in small datasets    |
+| **Box Loss**            | 80.0%     | Localization error; should improve with more training data           |
+| **Class Loss**          | 53.0%     | Some misclassifications; likely due to limited variation             |
+| **DFL Loss (YOLOv8)**   | 98.0%     | High as expected in early training or small datasets                 |
+
+✅ *Given the dataset size (~110 images), these results are a reasonable baseline. Performance is expected to improve with more data, better augmentations, or fine-tuning.*
+
 
 ### 2. ✅ Trained + Tested on Synthetic Data
-- **mAP:** 85.1%
-- **Precision:** 88.3%
-- **Recall:** 84.0%
+#### 📊 Evaluation Metrics – Synthetic Dataset (~138 Images)
+
+| Metric                  | Value (%) | Notes                                                                 |
+|-------------------------|-----------|-----------------------------------------------------------------------|
+| **mAP@0.5**             | 57.2%     | Reasonable accuracy for a small synthetic dataset                     |
+| **mAP@0.5:0.95**        | 28.3%     | Limited generalization across IoU thresholds                         |
+| **Precision**           | 63.0%     | Decent — majority of predictions are correct                         |
+| **Recall**              | 46.0%     | Model is missing some objects; more data may help                    |
+| **Box Loss**            | 72.0%     | High bounding box error — needs improvement                          |
+| **Class Loss**          | 39.0%     | Acceptable classification performance                                |
+| **DFL Loss (YOLOv8)**   | 87.0%     | Still high — indicates room for tuning                               |
+
+✅ *These results are decent for a synthetic dataset of only ~138 images. Performance may improve with better synthetic variety or fine-tuning.*
+
 
 ### 3. ❌ Trained on Synthetic, Tested on Real
 - **mAP:** 59.6%
